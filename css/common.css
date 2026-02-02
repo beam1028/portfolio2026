@@ -1,6 +1,7 @@
 /* COMMON */
 html {
   font-size: 16px;
+  overflow: hidden;
 }
 
 /** 타블렛 가로, 노트북 */
@@ -32,6 +33,7 @@ html {
 }
 
 body {
+  height: calc(var(--vh, 1vh) * 100);
   color: #333;
   font-size: 1.25rem;
   font-weight: 400;
@@ -85,7 +87,7 @@ a {
 /* main_swiper */
 .main_swiper {
   width: 100%;
-  height: calc(var(--var, 1vh) * 100);
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .back-to-position {
@@ -134,7 +136,7 @@ a {
 
 #header {
   width: 100vw;
-  height: calc(((var(--var, 1vh) * 100) - 650px) / 2);
+  height: calc(((var(--vh, 1vh) * 100) - 650px) / 2);
   position: fixed;
   top: 0;
   left: 0;
@@ -147,14 +149,14 @@ a {
 /** 모바일 세로 */
 @media (max-width: 375px) {
   #header {
-    height: calc(((var(--var, 1vh) * 100) - 550px) / 2);
+    height: calc(((var(--vh, 1vh) * 100) - 550px) / 2);
   }
 }
 
 /* 모바일 가로모드 */
 @media (orientation: landscape) and (max-height: 500px) {
   #header {
-    height: calc(((var(--var, 1vh) * 100) - 300px) / 2);
+    height: calc(((var(--vh, 1vh) * 100) - 300px) / 2);
   }
 }
 
