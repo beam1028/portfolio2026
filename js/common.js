@@ -1,21 +1,3 @@
-//100vh
-// function use100vh() {
-//   useEffect(() => {
-//     const handleResize = () => {
-//       const vh = window.innerHeight * 0.01;
-//       document.documentElement.style.setProperty("--vh", `${vh}px`);
-//     };
-
-//     handleResize();
-
-//     window.addEventListener("resize", handleResize);
-//     return () => {
-//       window.removeEventListener("resize", handleResize);
-//     };
-//   }, []);
-// }
-
-
 //호버시 탭
 $('.hov_area .hov_item').on('mouseover', function () {
   const $hov = $(this);

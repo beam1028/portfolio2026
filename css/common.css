@@ -67,6 +67,7 @@ a {
 @media (max-width: 480px) {
   .wrapper {
     width: 80%;
+    height: 600px;
   }
 }
 
@@ -146,6 +147,14 @@ a {
   visibility: visible;
   opacity: 1;
   transition: all .3s;
+}
+
+/** 모바일 세로 */
+@media (max-width: 480px) {
+   #header {
+    /* height: calc(((var(--vh, 1vh) * 100) - 550px) / 2); */
+    height: calc((100svh - 600px) / 2);
+  }
 }
 
 /** 모바일 세로 */
