@@ -7,14 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>김지은의 포트폴리오 2026</title>
 
-  <!-- TODO: 배포 후 실제 포트폴리오 URL로 변경 -->
-  <link rel="canonical" href="https://example.com/portfolio2026/" />
+  <link rel="canonical" href="https://portfolio2026-five-omega.vercel.app/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="김지은의 포트폴리오 2026" />
   <meta property="og:title" content="김지은의 포트폴리오" />
   <meta property="og:description" content="안녕하세요 3년차 웹퍼블리셔 김지은의 포트폴리오 입니다." />
-  <meta property="og:url" content="https://example.com/portfolio2026/" />
+  <meta property="og:url" content="https://portfolio2026-five-omega.vercel.app/" />
   <meta property="og:image" content="./images/card.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="김지은의 포트폴리오" />
@@ -30,6 +29,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/common.css" />
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   <script defer src="./js/common.js"></script>
 
   <!-- swiper -->
@@ -48,7 +49,7 @@
       </h1>
       <div class="menu_area">
         <span>WEB PUBLISHER</span>
-        <nav aria-label="주요 메뉴">
+        <nav>
           <ul class="menu">
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#skills">SKILLS</a></li>
@@ -80,29 +81,29 @@
                 </p>
               </div>
 
-              <section class="about_career" aria-labelledby="career-title">
-                <h3 id="career-title">CAREER</h3>
+              <section class="about_career">
+                <h3>CAREER</h3>
                 <ol class="career_grid">
                   <li>
                     <p class="career_period">
                       <time datetime="2022-01">2022.01</time> — <time datetime="2023-02">2023.02</time>
                     </p>
                     <h4>유베이스</h4>
-                    <p>잡코리아 콘텐츠 UI/UX 팀<br>기업공고 퍼블리싱 및 이미지 편집</p>
+                    <p>잡코리아 콘텐츠 UI/UX 팀<br>잡코리아 채용공고 HTML/CSS 퍼블리싱 및 운영</p>
                   </li>
                   <li>
                     <p class="career_period">
                       <time datetime="2023-08">2023.08</time> — <time datetime="2025-09">2025.09</time>
                     </p>
                     <h4>에덴</h4>
-                    <p>웹개발 제작부<br>웹 퍼블리싱, 기능 수정 및 유지보수</p>
+                    <p>웹개발 제작부<br>그누보드 기반 기업·기관 홈페이지 구축 및 유지보수, 디자인 시안 기반 웹 퍼블리싱</p>
                   </li>
                   <li>
                     <p class="career_period">
-                      <time datetime="2025-10">2025.10</time> — <span>PRESENT</span>
+                      <time datetime="2025-10">2026.03</time> — <span>재직중</span>
                     </p>
-                    <h4>샘플 스튜디오</h4>
-                    <p>웹 퍼블리싱 팀<br>랜딩페이지 제작 및 서비스 운영</p>
+                    <h4>한국법률데이터</h4>
+                    <p>개발팀<br>법률 관련 웹서비스의 입력폼 및 화면 구축 기존 PHP 기반 서비스의 화면 및 기능 유지보수</p>
                   </li>
                 </ol>
               </section>
@@ -140,8 +141,8 @@
               <figcaption>IMAGE AREA</figcaption>
             </figure>
             <div>
-              <p class="section_label">02 · EXPERTISE</p>
-              <h2>Tools of the Trade</h2>
+              <p class="section_label">02 · Skills</p>
+              <h2>Skills & Tools</h2>
               <p class="skills_intro_title">기술은 화면보다 먼저 사용자를 향해야 합니다.</p>
               <p>웹 표준을 지키는 구조부터 반응형 화면, 인터랙션과 유지보수까지 실제 운영 환경을 고려해 작업합니다.</p>
             </div>
@@ -150,33 +151,72 @@
             <li class="skill_item">
               <span class="skill_number">01</span>
               <p class="skill_label">SEMANTIC PUBLISHING</p>
-              <h3>HTML · CSS</h3>
-              <p>웹 표준과 접근성을 고려한 시맨틱 마크업, 반응형 레이아웃과 CSS 애니메이션을 구현합니다.</p>
+              <h3>
+                HTML · CSS
+                <span class="skill_icons" aria-hidden="true">
+                  <i class="fa-brands fa-html5"></i>
+                  <i class="fa-brands fa-css3-alt"></i>
+                </span>
+              </h3>
+              <p>웹페이지 구축, 유지보수와 반응형 레이아웃 구현, 기존 페이지 구조 분석 및 수정이 가능합니다.</p>
             </li>
             <li class="skill_item">
               <span class="skill_number">02</span>
               <p class="skill_label">INTERACTION</p>
-              <h3>JavaScript</h3>
-              <p>DOM 제어와 이벤트 처리를 이해하며 사용자 흐름에 맞는 인터랙션과 동적 UI를 구현합니다.</p>
+              <h3>
+                JavaScript · jQuery
+                <span class="skill_icons" aria-hidden="true">
+                  <i class="fa-brands fa-js"></i>
+                </span>
+              </h3>
+              <p>이벤트 처리와 기존 UI 기능 수정 및 사용자 입력값 계산 및 화면에 결과를 반영합니다.</p>
             </li>
             <li class="skill_item">
               <span class="skill_number">03</span>
               <p class="skill_label">VERSION CONTROL</p>
-              <h3>Git · GitHub</h3>
+              <h3>
+                Git · GitHub
+                <span class="skill_icons" aria-hidden="true">
+                  <i class="fa-brands fa-git-alt"></i>
+                  <i class="fa-brands fa-github"></i>
+                </span>
+              </h3>
               <p>프로젝트 버전을 관리하고 브랜치를 활용해 변경 이력을 정리하며 협업할 수 있습니다.</p>
             </li>
             <li class="skill_item">
               <span class="skill_number">04</span>
               <p class="skill_label">VISUAL TOOLS</p>
               <h3>Photoshop · Illustrator</h3>
-              <p>웹 시안과 이미지, 간단한 로고 및 아이콘을 제작하고 실무에 필요한 에셋을 편집합니다.</p>
+              <p>웹 이미지 편집, 디자인 시안 확인 및 간단한 그래픽 작업이 가능합니다.</p>
             </li>
-            <li class="skill_item skill_item_wide">
+            <li class="skill_item">
+              <span class="skill_number">05</span>
+              <p class="skill_label">MAINTENANCE</p>
+              <h3>
+                PHP · GNUBOARD
+                <span class="skill_icons" aria-hidden="true">
+                  <i class="fa-brands fa-php"></i>
+                </span>
+              </h3>
+              <p>기존 PHP 기반 게시판 코드를 파악해 기능을 수정하고, 운영 중인 웹사이트를 유지보수합니다.</p>
+            </li>
+            <li class="skill_item">
+              <span class="skill_number">06</span>
+              <p class="skill_label">DESIGN HANDOFF</p>
+              <h3>
+                Figma
+                <span class="skill_icons" aria-hidden="true">
+                  <i class="fa-brands fa-figma"></i>
+                </span>
+              </h3>
+              <p>기초 활용 — 디자인 시안 확인, 요소 크기, 위치 확인, 이미지 에셋 추출이 가능합니다.</p>
+            </li>
+            <!-- <li class="skill_item skill_item_wide">
               <span class="skill_number">05</span>
               <p class="skill_label">MAINTENANCE</p>
               <h3>PHP · GNUBOARD</h3>
               <p>기존 PHP 기반 게시판 코드를 파악해 기능을 수정하고, 운영 중인 웹사이트를 유지보수합니다.</p>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -189,23 +229,23 @@
         <div class="portfolio_content">
           <div class="portfolio_section_label">
             <h2>03 · Portfolio</h2>
-            <p>영상과 상세 설명으로 살펴보는 다섯 개의 프로젝트</p>
-            <strong>01 — 05</strong>
+            <p>영상과 상세 설명으로 살펴보는 열 개의 프로젝트</p>
+            <strong>01 — 10</strong>
           </div>
           <div class="portfolio_body">
             <div class="md_swiper">
               <div class="swiper-wrapper">
                 <article class="swiper-slide portfolio_slide">
                   <div class="project_media">
-                    <video src="./images/aplus_video.mp4" muted loop playsinline preload="metadata"
-                      aria-labelledby="project-title-1"></video>
+                    <img class="project_logo" src="./images/aplus_logo.png" alt="" aria-hidden="true" />
+                    <video src="./images/aplus_video.mp4" muted loop playsinline preload="metadata"></video>
                   </div>
                   <div class="project_info">
                     <div class="project_heading">
                       <span>01</span>
                       <p>Cleaning Service · PC</p>
                     </div>
-                    <h3 id="project-title-1">에이플러스 토탈크린</h3>
+                    <h3>에이플러스 토탈크린</h3>
                     <p class="project_meta">1200PX PC · WEB PUBLISHING</p>
                     <ul>
                       <li>문의 폼과 실시간 상담 게시판을 연동해 메인 화면에서도 빠르게 문의할 수 있도록 구현했습니다.</li>
@@ -221,16 +261,16 @@
 
                 <article class="swiper-slide portfolio_slide">
                   <div class="project_media">
-                    <video src="./images/theplan_video.mp4" muted loop playsinline preload="metadata"
-                      aria-labelledby="project-title-2"></video>
+                    <img class="project_logo" src="./images/theplan_logo.png" alt="" aria-hidden="true" />
+                    <video src="./images/theplan_video.mp4" muted loop playsinline preload="metadata"></video>
                   </div>
                   <div class="project_info">
                     <div class="project_heading">
                       <span>02</span>
                       <p>Education · PC / Mobile</p>
                     </div>
-                    <h3 id="project-title-2">더 플랜 컴퓨터 아트 학원</h3>
-                    <p class="project_meta">1400PX PC · 640PX MOBILE · SEPARATE VIEWS</p>
+                    <h3>더 플랜 컴퓨터 아트 학원</h3>
+                    <p class="project_meta">1400PX PC · 640PX MOBILE</p>
                     <ul>
                       <li>게시판에 작성한 콘텐츠가 메인 페이지에 자동 노출되도록 게시물 데이터를 연동했습니다.</li>
                       <li>PC와 Mobile 버전을 분리하여 제작한 컴퓨터 학원 사이트입니다.</li>
@@ -248,15 +288,15 @@
 
                 <article class="swiper-slide portfolio_slide">
                   <div class="project_media">
-                    <video src="./images/innots_video.mp4" muted loop playsinline preload="metadata"
-                      aria-labelledby="project-title-3"></video>
+                    <img class="project_logo" src="./images/innots_logo.png" alt="" aria-hidden="true" />
+                    <video src="./images/innots_video.mp4" muted loop playsinline preload="metadata"></video>
                   </div>
                   <div class="project_info">
                     <div class="project_heading">
                       <span>03</span>
                       <p>Outsourcing · PC / Mobile</p>
                     </div>
-                    <h3 id="project-title-3">에스비 코퍼레이션</h3>
+                    <h3>에스비 코퍼레이션</h3>
                     <p class="project_meta">FULL PAGE PC · 640PX MOBILE</p>
                     <ul>
                       <li>Swiper를 활용해 마우스 스크롤 시 섹션이 전환되는 풀페이지 방식을 구현했습니다.</li>
@@ -275,15 +315,15 @@
 
                 <article class="swiper-slide portfolio_slide">
                   <div class="project_media">
-                    <video src="./images/nara_video.mp4" muted loop playsinline preload="metadata"
-                      aria-labelledby="project-title-4"></video>
+                    <img class="project_logo" src="./images/nara_logo.png" alt="" aria-hidden="true" />
+                    <video src="./images/nara_video.mp4" muted loop playsinline preload="metadata"></video>
                   </div>
                   <div class="project_info">
                     <div class="project_heading">
                       <span>04</span>
                       <p>Ship Brokerage · PC</p>
                     </div>
-                    <h3 id="project-title-4">나라선박 중개소</h3>
+                    <h3>나라선박 중개소</h3>
                     <p class="project_meta">1240PX PC · BOARD CUSTOMIZATION</p>
                     <ul>
                       <li>구매·판매 게시글의 주요 필드를 메인 화면에서 핵심 내용과 함께 확인하도록 구현했습니다.</li>
@@ -299,22 +339,22 @@
 
                 <article class="swiper-slide portfolio_slide">
                   <div class="project_media">
-                    <video src="./images/drama_video.mp4" muted loop playsinline preload="metadata"
-                      aria-labelledby="project-title-5"></video>
+                    <img class="project_logo" src="./images/drama_logo.png" alt="" aria-hidden="true" />
+                    <video src="./images/drama_video.mp4" muted loop playsinline preload="metadata"></video>
                   </div>
                   <div class="project_info">
                     <div class="project_heading">
                       <span>05</span>
                       <p>SMP · Mobile</p>
                     </div>
-                    <h3 id="project-title-5">드라마티크</h3>
+                    <h3>드라마티크</h3>
                     <p class="project_meta">640PX MOBILE · MOBILE OPTIMIZED UI</p>
                     <ul>
                       <li>모바일 환경에 맞춰 레이아웃과 인터페이스를 최적화하여 제작한 모바일 사이트입니다.</li>
                     </ul>
                     <div class="project_links">
-                      <a href="http://dramatic.edenstore.co.kr/" target="_blank">
-                        사이트 바로가기 <span>↗</span>
+                      <a href="javascript:void(0)">
+                        호스팅만료 사이트
                       </a>
                     </div>
                   </div>
@@ -343,7 +383,7 @@
                 <span>PHONE</span><strong>010. 3029. 2703</strong><small>언제든 편하게 연락해 주세요.</small>
               </a>
               <a href="mailto:kimjiun1028@gmail.com" class="contact_item">
-                <span>EMAIL</span><strong>kimjiun1028<br>@gmail.com</strong><small>이메일 연락도 환영합니다.</small>
+                <span>EMAIL</span><strong>kimjiun1028@gmail.com</strong><small>이메일 연락도 환영합니다.</small>
               </a>
               <a href="./images/resume.pdf" target="_blank" class="contact_item">
                 <span>DOCUMENT</span><strong>Resume</strong><small>경력과 상세 이력을 확인해보세요.</small>
@@ -359,6 +399,14 @@
 
   </main>
 
+  <footer id="footer">
+    <div class="inner">
+      <div class="footer_content">
+        <p>© 2026 KIM JI EUN. ALL RIGHTS RESERVED.</p>
+        <p>WEB PUBLISHER PORTFOLIO</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 

@@ -1,52 +1,46 @@
-function initializeStickyMenu() {
-  const menu = document.querySelector('#header .menu_area');
-
-  if (!menu) return;
-
-  const placeholder = document.createElement('div');
-  placeholder.className = 'menu_placeholder';
-  menu.before(placeholder);
-
-  let stickyStart = menu.getBoundingClientRect().top + window.scrollY;
-
-  function updateStickyMenu() {
-    const isSticky = window.scrollY >= stickyStart;
-
-    menu.classList.toggle('is_sticky', isSticky);
-    placeholder.style.height = isSticky ? `${menu.offsetHeight}px` : '0px';
+// 메뉴 상단 고정
+$(window).on('scroll', function () {
+  if ($(this).scrollTop() >= 130) {
+    $('#header .menu_area').addClass('is_fixed');
+  } else {
+    $('#header .menu_area').removeClass('is_fixed');
   }
+});
 
-  window.addEventListener('scroll', updateStickyMenu, { passive: true });
-  window.addEventListener('resize', () => {
-    menu.classList.remove('is_sticky');
-    placeholder.style.height = '0px';
-    stickyStart = menu.getBoundingClientRect().top + window.scrollY;
-    updateStickyMenu();
-  });
+// 메뉴 클릭 시 스크롤 이동
+$('a[href^="#"]').on('click', function (event) {
+  const $target = $($(this).attr('href'));
 
-  updateStickyMenu();
-}
+  event.preventDefault();
 
-function pausePortfolioVideos(swiper) {
-  swiper.el.querySelectorAll('video').forEach((video) => {
-    video.pause();
+  $('html, body').stop().animate({
+    scrollTop: $target.offset().top - $('#header .menu_area').outerHeight()
+  }, 800, 'easeInOutCubic');
+});
+
+// 포트폴리오 영상 초기화
+function resetPortfolioVideos() {
+  $('.project_media video').each(function () {
+    this.pause();
+    this.currentTime = 0;
   });
 }
 
-function playActivePortfolioVideo(swiper) {
-  pausePortfolioVideos(swiper);
+// 포트폴리오 영상 hover 재생
+$('.md_swiper').on('mouseenter mouseleave', '.project_media', function (event) {
+  const video = $(this).find('video').get(0);
+  const isActive = $(this).closest('.swiper-slide-active').length;
 
-  const activeVideo = swiper.el.querySelector('.swiper-slide-active video');
-  if (activeVideo) {
-    activeVideo.currentTime = 0;
-    activeVideo.play().catch(() => {
-      // 자동 재생이 차단된 경우 사용자가 controls로 직접 재생할 수 있습니다.
-    });
+  if (event.type === 'mouseenter' && isActive) {
+    video.play().catch(() => { });
+    return;
   }
-}
 
-initializeStickyMenu();
+  video.pause();
+  video.currentTime = 0;
+});
 
+// 포트폴리오 Swiper
 const portfolioSwiper = new Swiper('.md_swiper', {
   loop: true,
   pagination: {
@@ -54,8 +48,6 @@ const portfolioSwiper = new Swiper('.md_swiper', {
     clickable: true,
   },
   on: {
-    init: playActivePortfolioVideo,
-    slideChangeTransitionStart: pausePortfolioVideos,
-    slideChangeTransitionEnd: playActivePortfolioVideo,
+    slideChangeTransitionStart: resetPortfolioVideos,
   },
 });
