@@ -1,120 +1,61 @@
-//호버시 탭
-$('.hov_area .hov_item').on('mouseover', function () {
-  const $hov = $(this);
-  const idx = $hov.index();
+function initializeStickyMenu() {
+  const menu = document.querySelector('#header .menu_area');
 
-  // 같은 cont 영역만 제어
-  const $cont = $hov.closest('.cont');
+  if (!menu) return;
 
-  // 탭 hover 처리
-  $hov
-    .addClass('hover')
-    .siblings().removeClass('hover');
+  const placeholder = document.createElement('div');
+  placeholder.className = 'menu_placeholder';
+  menu.before(placeholder);
 
-  // 해당 cont 안의 내용만 변경
-  $cont.find('.hov_cont')
-    .eq(idx).addClass('show')
-    .siblings().removeClass('show');
-});
+  let stickyStart = menu.getBoundingClientRect().top + window.scrollY;
 
+  function updateStickyMenu() {
+    const isSticky = window.scrollY >= stickyStart;
 
-//포트몰리오 모달
-$('.md_swiper').on('click', '.more', function () {
-  const idx = $(this)
-    .closest('.md_swiper_slide')
-    .data('index');
-
-  const $portfolio = $(this).closest('#portfolio');
-
-  $portfolio.find('.pf_modal_cont').hide();
-  $portfolio.find('.pf_modal_cont')
-    .eq(idx)
-    .fadeIn(300);
-
-  swiper2.allowTouchMove = false;
-});
-
-// 모달 닫기
-$('.pf_modal .close').on('click', function (e) {
-  e.stopPropagation(); // 이벤트 버블링 방지
-
-  $(this).closest('.pf_modal_cont').fadeOut('300');
-});
-
-//main swiper
-var bullet = ['<i class="fa-solid fa-house"></i>', 'About', 'Skills', 'Portfolio', 'Contact'];
-const header = document.querySelector('#header'); // header 요소 선택
-
-const swiper = new Swiper('.main_swiper', {
-  direction: 'horizontal',
-  mousewheel: true,
-  speed: 500,
-  on: {
-    init() {
-      // wrapper slide_on
-      const activeSlide = this.el.querySelector('.swiper-slide-active .wrapper');
-      if (activeSlide) activeSlide.classList.add('slide_on');
-
-      // 첫 슬라이드 체크
-      toggleHeaderClass(this);
-    },
-    slideChangeTransitionStart() {
-      // 모든 wrapper에서 slide_on 제거
-      this.el.querySelectorAll('.wrapper').forEach(wrapper => {
-        wrapper.classList.remove('slide_on');
-      });
-    },
-    slideChangeTransitionEnd() {
-      // active 슬라이드 안 wrapper에 slide_on 추가
-      const activeWrapper = this.el.querySelector('.swiper-slide-active .wrapper');
-      if (activeWrapper) activeWrapper.classList.add('slide_on');
-
-      // 첫 슬라이드 체크
-      toggleHeaderClass(this);
-    },
-  },
-  pagination: {
-    el: '#header .hd_wrapper ul.menu',
-    clickable: true,
-    renderBullet: function (index, className) {
-      return '<li class="' + className + '"><span>' + (bullet[index]) + '</span></li>';
-    }
-  },
-});
-
-// activeIndex === 0이면 #header에 클래스 slide_0 추가, 아니면 제거
-function toggleHeaderClass(swiper) {
-  if (swiper.activeIndex === 0) {
-    header.classList.add('slide_0');
-  } else {
-    header.classList.remove('slide_0');
+    menu.classList.toggle('is_sticky', isSticky);
+    placeholder.style.height = isSticky ? `${menu.offsetHeight}px` : '0px';
   }
-};
 
-//포트폴리오 swiper
-const swiper2 = new Swiper('.md_swiper', {
-  // Optional parameters
-  direction: 'horizontal',
+  window.addEventListener('scroll', updateStickyMenu, { passive: true });
+  window.addEventListener('resize', () => {
+    menu.classList.remove('is_sticky');
+    placeholder.style.height = '0px';
+    stickyStart = menu.getBoundingClientRect().top + window.scrollY;
+    updateStickyMenu();
+  });
+
+  updateStickyMenu();
+}
+
+function pausePortfolioVideos(swiper) {
+  swiper.el.querySelectorAll('video').forEach((video) => {
+    video.pause();
+  });
+}
+
+function playActivePortfolioVideo(swiper) {
+  pausePortfolioVideos(swiper);
+
+  const activeVideo = swiper.el.querySelector('.swiper-slide-active video');
+  if (activeVideo) {
+    activeVideo.currentTime = 0;
+    activeVideo.play().catch(() => {
+      // 자동 재생이 차단된 경우 사용자가 controls로 직접 재생할 수 있습니다.
+    });
+  }
+}
+
+initializeStickyMenu();
+
+const portfolioSwiper = new Swiper('.md_swiper', {
   loop: true,
-  slidesPerView: 1,
-  spaceBetween: 15,
-  nested: true,
-  observer: true,
-  observeParents: true,
-  navigation: {
-    prevEl: ".md-prev",
-    nextEl: ".md-next",
-  },
   pagination: {
-    el: ".md-pagination",
+    el: '.md-pagination',
     clickable: true,
   },
-  breakpoints: {
-    1025: { //1024px 타블렛 가로, 노트북
-      slidesPerView: 2,
-    },
-    1920: { //
-      slidesPerView: 3,
-    },
+  on: {
+    init: playActivePortfolioVideo,
+    slideChangeTransitionStart: pausePortfolioVideos,
+    slideChangeTransitionEnd: playActivePortfolioVideo,
   },
 });
