@@ -135,16 +135,6 @@ main {
   letter-spacing: var(--letter-wide);
 }
 
-.image_placeholder,
-.about_photo_placeholder {
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(51 51 51 / 55%);
-  font-family: var(--sans);
-}
-
 /* Common responsive */
 @media (max-width: 768px) {
 
@@ -378,6 +368,7 @@ main {
 #about .about_photo_placeholder {
   height: 100%;
   align-self: stretch;
+  background: url("../images/profile_image.png") center/cover no-repeat;
 }
 
 #about .about_links {
@@ -465,8 +456,9 @@ main {
   gap: 44px;
 }
 
-#skills .skills_intro .image_placeholder {
+#skills .skills_intro .skills_image_placeholder {
   aspect-ratio: 4 / 3;
+  background: url("../images/skills_image.png") center/cover no-repeat;
 }
 
 #skills .skills_intro>div {
@@ -562,7 +554,7 @@ main {
     grid-template-columns: 1fr;
   }
 
-  #skills .skills_intro .image_placeholder {
+  #skills .skills_intro .skills_image_placeholder {
     height: auto;
     aspect-ratio: 16 / 9;
   }
